@@ -474,6 +474,7 @@ print(f'Encrypted Message :{cipher_text}')
 print(f'Decrypted Message : {plain_text}')
 -------------------------------------------------------'''
 
+''' 572
 # Exercise : Hangman Game Program
 
 # lets make a dictionary art of hangman
@@ -568,13 +569,38 @@ if __name__ == '__main__':
 	main()
 
 
+477------------------------------------------------------'''
 
 
 
+'''------------------------------------------------------'''
+
+		# Object Oriented Programming
+
+'''------------------------------------------------------'''
 
 
+# Object : A 'bundle' of related attributes(parameters) and methods(functions)
+# Class : (Blueprint) Used to design the structure and layout of the object
 
+# Method is a function that belongs to an object
 
+# In a class, to create object we need constructor(Special type of method)
+
+# . --> attribute access operator
+
+# self --> to assign the attibutes we access self
+
+class Car:
+	def __init__(self, model, year, color, for_sale):
+		self.model = model
+		self.year = year
+		self.color = color
+		self.for_sale = for_sale
+
+car1 = Car('Mustang', 2025, 'Blue', False)
+
+print(car1.year)
 
 
 
