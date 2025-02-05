@@ -642,9 +642,12 @@ print(circle.radius)
 
 # 26. Polymorphism : can be achieved by (1. Inheritance, 2. Duck Typing)
 
+
+'''
 # 27. Static Methods: A Method that belongs to a class rather than any objects in that class
 # --> only needs to access the class directly, don't have to create any objects in that class
-# Instance Method : First we have to access an object.
+# Instance Method : First we have to access an object. 
+# IM (Uses self as first parameter) and SM doesn't
 
 
 class Employee:
@@ -668,6 +671,136 @@ print(Employee.is_vaild_position('Cashier'))
 employee1 = Employee('Binny','Student')
 
 print(employee1.get_info())
+
+
+# 28. Class Methods : Allows Operations related to the class itself
+# --> Take (cls) as the first parameter, which represents the class itself
+
+class Student():
+
+	count = 0
+	total_gpa = 0
+
+	def __init__(self, name, gpa):
+		self.name = name
+		self.gpa = gpa
+		Student.count += 1
+		Student.total_gpa += gpa
+
+	#instance method
+	def get_info(self):
+		return f'{self.name} {self.gpa}'
+
+	@classmethod
+	def get_count(cls):
+		return f'Total # of Students : {cls.count}'
+
+	@classmethod
+	def get_avg(cls):
+		if cls.count == 0:
+			return 0
+		else:
+			return f'# Total Average of Student gpa : {cls.total_gpa / cls.count :.2f}'
+
+student1 = Student('a', 3.0)
+student2 = Student('b', 2.8)
+student3 = Student('c', 3.6)
+
+print(student1.get_info())
+print(Student.get_count())
+print(Student.get_avg())
+
+
+# Instance methods(self) : Best for operations on instances of the class (objects)
+# Static Methods : Best for utility functions hat do not need access to class data
+# Class Methods(cls) : Best for class-level data or require acess to the class itself
+
+
+# Magic methods : They allow developeres to define or customize the behabior of objects
+# __init__(initiliaze), __str__(strings), __eq__(equal),__lt__(less than), __gt__ (greater than)
+
+
+
+--647---Instance, Static and Class Methods, Magic Methods------------------------------------------------------------------------'''
+
+
+
+class Book():
+
+	def __init__(self, title, author, no_pages):
+		self.title = title
+		self.author = author
+		self.no_pages = no_pages
+
+	# we can print string representation of the object, when we print it on the console
+	def __str__(self):
+		return f'{self.title} by {self.author}'
+
+	# method to check the values are equal are not, cause magic methods are customizable
+	def __eq__(self, other):
+		return self.title == other.title
+
+	def __lt__(self, other):
+		return self.no_pages < other.no_pages
+	def __gt__(self, other):
+		return self.no_pages > other.no_pages	
+
+	def __add__(self, other):
+		return self.no_pages + other.no_pages
+
+	def __contains__(self, keyword):
+		return keyword in self.title or keyword in self.author
+
+	def __getitem__(self, k):
+		if k == 'title':
+			return self.title
+		elif k == 'author':
+			return self.author
+		elif k == 'no_pages':
+			return self.no_pages
+		else:
+			return f'{key} is not found'
+
+
+book1 = Book('The Hobbit', 'J.R.R. Tolkien', 390)
+book2 = Book('Harry Potter and The Philosophers stone', 'J.K. Rowling', 250)
+book3 = Book('The Lion, The Witch and The Wardrobe', 'C.S. Lewis', 278)
+
+
+print(book2.no_pages)
+print(book3) # string
+print(book2 == book3) # equals to
+print(book2 < book3) # lesser than
+print(book1 > book3) # greater than
+print(book2 + book3) # add
+print('Lion' in book3) # contains magic method
+print(book2['title'])
+print(book1['author'])
+print(book3['no_pages'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
