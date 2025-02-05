@@ -292,7 +292,149 @@ cards = [2, 3, 4, 5, 6, 7, 8, 9, 'J', 'Q','K','A']
 #print(st)
 random.shuffle(cards)
 print(cards)
+
+
+-------------------------------------------------------'''
 '''
+# 16. Function and Return.
+# parameter and argument
+
+#4 types of arguments : positional, default, keyword, arbitrary(*args --> tuple, **kwars --> dictionary).
+
+
+def add(*args):
+	total = 0
+	for arg in args:
+		total += arg
+	return total
+
+print(add(1,2,3,4))
+
+-------------------------------------------------------'''
+'''
+# 17. Iterables, # 18. Membership operators(in, not in)
+
+# 19.List Comprehension: [expression for value in iterable if condition]
+# --> A Concise way to create lists, compact and easier to read than traditional loops
+
+numbers = [1, -2, 3, -4, 5, -6]
+# lets make a list of positive numbers
+
+pos_nums = [num for num in numbers if num >= 0]
+print(pos_nums)
+
+# 20. Match- Case Statement(Switch ) py 3.10 or above
+
+def is_weekend(day):
+	match day:
+		case 'Saturday' | 'Sunday':
+			return True
+		case 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday':
+			return False
+		case _:
+			return 'Not a Valid day'
+
+print(is_weekend('Sunday'))
+
+-------------------------------------------------------'''
+# 21. Modules : A files containing a code, we want to use
+#print(help('modules'))
+#print(help('math'))
+
+# 22. Variable scope : Where a variable is visible and accesible
+# scope resolution : (LEGB)  Local -> enclosed -> Gloabal -> Built-in
+
+# 23. Main Function : if __name__ = __main__: main()
+
+
+'''-------------------------------------------------------'''
+'''
+# Exercise : A Banking Program
+
+def show_balance(balance):
+	print('******************************')
+	print(f'Your balance is {balance:.2f}')
+	print('******************************')
+
+def deposit():
+	amount = float(input('Enter amount to deposit: '))
+	if amount < 0:
+		print('******************************')
+		print('Enter Valid Amount')
+		print('******************************')
+		return 0
+	else:
+		return amount
+	
+
+def withdraw(balance):
+	print('******************************')
+	amount = float(input('Enter Amount to Withdraw: '))
+	print('******************************')
+	if amount < 0:
+		print('******************************')
+		print('Enter Valid Amount')
+		print('******************************')
+		return 0
+	elif amount > balance:
+		print('******************************')
+		print('Insufficient funds')
+		print('******************************')
+		return 0
+	else:
+		return amount
+
+def main():
+
+	balance = 0
+
+	is_running = True
+
+	while is_running:
+		print('******************************')
+		print('Banking Program')
+		print('******************************')
+
+		print('1. show_balance')
+
+		print('2. deposit')
+
+		print('3. withdraw')
+
+		print('4. exit')
+		print('******************************')
+		choice = input('Enter a choice (1 - 4): ')
+		print('******************************')
+
+		if choice == '1':
+			show_balance(balance)
+		elif choice == '2':
+			balance += deposit()
+		elif choice == '3':
+			balance -= withdraw(balance)
+		elif choice == '4':
+			is_running = False 
+		else:
+			print('******************************')
+			print('Invalid choice')
+			print('******************************')
+	print('******************************')
+	print('Thank You, Have a Nice day..!')
+	print('******************************')
+
+if __name__ == '__main__':
+	main()
+
+-------------------------------------------------------'''
+
+
+
+
+
+
+
+
+
 
 
 
