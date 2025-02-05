@@ -427,7 +427,51 @@ if __name__ == '__main__':
 
 -------------------------------------------------------'''
 
+# Exercise : Substitution Cipher Program 
 
+# String values
+import random
+import string
+
+#w = string.whitespace
+#s = string.punctuation
+#d = string.digits
+#l = string.ascii_letters
+
+#print(w)
+#print(s)
+#print(d)
+#print(l)
+
+chars = ' ' + string.punctuation + string.digits + string.ascii_letters
+chars = list(chars)
+
+key = chars.copy() # copying chars list
+
+random.shuffle(key) # shuffling items in list Key
+
+#print(f'Chars :{chars}')
+#print(f'Key   : {key}')
+
+plain_text = input('Enter a Message to Encrypt: ')
+cipher_text = '' #message to encrypt
+
+for letter in plain_text:
+	index = chars.index(letter)
+	cipher_text += key[index]
+
+print(f'Original Message  : {plain_text}')
+print(f'Encrypted Message : {cipher_text}')
+
+cipher_text = input('Enter a Message to Decrypt: ')
+plain_text = ''
+
+for letter in cipher_text:
+	index = key.index(letter)
+	plain_text += chars[index]
+
+print(f'Encrypted Message :{cipher_text}')
+print(f'Decrypted Message : {plain_text}')
 
 
 
