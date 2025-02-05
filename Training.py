@@ -575,11 +575,11 @@ if __name__ == '__main__':
 
 '''------------------------------------------------------'''
 
-		# Object Oriented Programming
+		# 24.Object Oriented Programming
 
 '''------------------------------------------------------'''
 
-
+'''--#641
 # Object : A 'bundle' of related attributes(parameters) and methods(functions)
 # Class : (Blueprint) Used to design the structure and layout of the object
 
@@ -602,15 +602,72 @@ car1 = Car('Mustang', 2025, 'Blue', False)
 
 print(car1.year)
 
+# 25. Inheritance : Allows a class to inherit attributes and methods from another class
+	# class Sub(Super)
+
+	# multiple Inheritance : C(A, B)
+	# multi-level Inheritance : C(B) <- B(A) <- A
+
+	# super() : Function used in a child to call methods from a parent class(Super class)
 
 
+class Shape():
+	def __init__(self, color, is_filled):
+		self.color = color
+		self.is_filled = is_filled
+
+class Circle(Shape):
+	def __init__(self, color, is_filled, radius):
+		super().__init__(color, is_filled)
+		self.radius = radius
+
+class Square(Shape):
+	def __init__(self, color, is_filled, width):
+		super().__init__(color, is_filled)
+		self.width = width
+
+class Triangle(Shape):
+	def __init__(self, color, is_filled, heigth, width):
+		super().__init__(color, is_filled)
+		self.heigth = heigth
+		self.width = width
+
+circle = Circle(color = 'Blue', is_filled = True, radius = 5)
+
+print(circle.color)
+print(circle.is_filled)
+print(circle.radius)
+
+--583----Class, Inheritance, super()--------------------------------------------------------------  '''
+
+# 26. Polymorphism : can be achieved by (1. Inheritance, 2. Duck Typing)
+
+# 27. Static Methods: A Method that belongs to a class rather than any objects in that class
+# --> only needs to access the class directly, don't have to create any objects in that class
+# Instance Method : First we have to access an object.
 
 
+class Employee:
+
+	def __init__(self, name, position):
+		self.name = name
+		self.position = position
+
+	def get_info(self):
+
+		return f'{self.name} = {self.position}' # membership operator
 
 
+	@staticmethod
+	def is_vaild_position(position):
+		valid_positions = ['Manager', 'Cook', 'Cashier', 'Janitor']
+		return position in valid_positions
 
+print(Employee.is_vaild_position('Cashier'))
 
+employee1 = Employee('Binny','Student')
 
+print(employee1.get_info())
 
 
 
