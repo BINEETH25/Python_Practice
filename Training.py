@@ -779,6 +779,8 @@ print(book3['no_pages'])
 
 
 
+''' --840--
+
 # 30. Property : Decorator sed to define methods as a property(It can be accessed like an attribute)
 # getter method : to add additional logic to read attributes
 # setter method : to add additional logic to write attributes
@@ -837,7 +839,26 @@ print(rectangle.height)
 del(rectangle.width)
 del(rectangle.height)
 
+----782 --- Property ----------------------------------------------------------'''
 
+# 31. decorator : A function that extends the behavior of another function without modifying the base function
+# it passes the base function as an argument to the decorator
+
+def add_sprinkles(func):
+	def wrapper(*args, **kwargs): # for code consistency
+		print('added sprinkles ')
+		func(*args, **kwargs) 
+	return wrapper
+
+@add_sprinkles # this is decorator and we can add more
+def get_icecream(flavor):
+	print(f'I need {flavor} icecream')
+
+#get_icecream()
+
+# to pass arguments in function we need to include *args or **kwargs
+
+get_icecream('Vanila')
 
 
 
