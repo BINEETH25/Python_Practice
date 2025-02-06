@@ -897,7 +897,7 @@ now = now.strftime('%H:%M:%S %m-%d-%y')
 print(now)
 
 --------------------------------------------'''
-
+'''
 # 35. Multithreading : Used to perform multiple tasks concurrently(multi tasking)
  	# -> Good for I/O bound tasks like reading files or fetching data from API's
  	# -->    threading.Thread(target=my_function)
@@ -941,11 +941,47 @@ chore3.join()
 
 print('All chores are complete')
 
+-900- Multithreading--------------------------------------------------------------------------'''
 
 
+# 36. request API data
+
+# Status codes info = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status'
+
+# used = 'https://pokeapi.co/' 
 
 
+import requests
 
+
+base_url = 'https://pokeapi.co/api/v2/'
+
+def get_pokemon_info(name):
+	url = f'{base_url}/pokemon/{name}'
+	response = requests.get(url)
+	print(response) # prints a status code, here([200] is Ok)
+
+	if response.status_code == 200: # looking for status code is 200 or not
+		#print('Data Retrived')
+		pokemon_data = response.json() # we will recieve a large of dictionary data
+		#print(pokemon_data)
+		return pokemon_data
+	else:
+		print(f'Failed to retrive data {response.status_code}')
+
+
+#pokemon_name = 'pikachu'
+# lets ask user for his pokemon
+pokemon_name = input('Enter Your Favorite Pokemon: ')
+#get_pokemon_info(pokemon_name)
+
+pokemon_info = get_pokemon_info(pokemon_name) # assigning a variable to store pokemon data dictionary
+
+if pokemon_info:
+	print(f'Name   : {pokemon_info['name'].capitalize()}')
+	print(f'id     : {pokemon_info['id']}')
+	print(f'Height : {pokemon_info['height']}')
+	print(f'Weight : {pokemon_info['weight']}')
 
 
 
