@@ -716,14 +716,11 @@ print(Student.get_avg())
 # Class Methods(cls) : Best for class-level data or require acess to the class itself
 
 
-# Magic methods : They allow developeres to define or customize the behabior of objects
+--647---Instance, Static and Class Methods------------------------------------------------------------------------'''
+
+''' --777--
+# 29.Magic methods : They allow developeres to define or customize the behabior of objects
 # __init__(initiliaze), __str__(strings), __eq__(equal),__lt__(less than), __gt__ (greater than)
-
-
-
---647---Instance, Static and Class Methods, Magic Methods------------------------------------------------------------------------'''
-
-
 
 class Book():
 
@@ -778,8 +775,67 @@ print(book2['title'])
 print(book1['author'])
 print(book3['no_pages'])
 
+---721---Magic Methods------------------------------------------------------------------------'''
 
 
+
+# 30. Property : Decorator sed to define methods as a property(It can be accessed like an attribute)
+# getter method : to add additional logic to read attributes
+# setter method : to add additional logic to write attributes
+# deleter method : to add additional logic to delete attributes
+
+class Rectangle():
+
+	def __init__(self, width, height):
+		self._width = width
+		self._height = height
+		# to add property decorator we need to set _ before parameters to make them protected from external accessing.
+
+	# getter methods 
+	@property
+	def width(self):
+		return f'{self._width:.1f} cm'
+
+	@property
+	def height(self):
+		return f'{self._height:.1f} cm'
+	
+	@width.setter
+	def width(self, new_width):
+		if new_width > 0:
+			self._width = new_width
+		else:
+			print('width must be greater than zero')
+
+	@height.setter
+	def height(self, new_height):
+		if new_height > 0:
+			self._height = new_height
+		else:
+			print('Height must be greater than zero') 
+
+
+	@width.deleter
+	def width(self):
+		del self._width
+		print('Width has been deleted')
+
+	@height.deleter
+	def height(self):
+		del self._height
+		print('Height has been deleted')
+
+
+rectangle = Rectangle(3,4)
+
+rectangle.width = 5
+rectangle.height = 6
+
+print(rectangle.width) 
+print(rectangle.height)
+
+del(rectangle.width)
+del(rectangle.height)
 
 
 
