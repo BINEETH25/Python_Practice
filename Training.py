@@ -841,6 +841,7 @@ del(rectangle.height)
 
 ----782 --- Property ----------------------------------------------------------'''
 
+'''
 # 31. decorator : A function that extends the behavior of another function without modifying the base function
 # it passes the base function as an argument to the decorator
 
@@ -860,12 +861,85 @@ def get_icecream(flavor):
 
 get_icecream('Vanila')
 
+-845--decorator--------------------------------------------------------'''
 
+# 32. Exception Handling : An event that can interput the flow of a program
+# try:  --> Try some code
+# except Exception: -->  Handle Exception
+# finally: --> do some clean up (finally blocks excutes always)
 
+# 33. File Handling (Relative path(if file in same folder) and Absolute path)
+'''
+import os
 
+filename = 'hello.py'
 
+if os.path.exists(filename):
+	print('file exists')
+	#.exists() --> checks if the item exists or not
+	#.isfile() --> checks if the item is file or not
+	#.isdir()  --> checks id the item is directory or not
+else:
+	print('file not found')
 
+--------------------------------------------'''
 
+''' # 34. Datetime
+import datetime
+
+today = datetime.date.today()
+print(today)
+
+now = datetime.datetime.now()
+print(now)
+
+now = now.strftime('%H:%M:%S %m-%d-%y')
+print(now)
+
+--------------------------------------------'''
+
+# 35. Multithreading : Used to perform multiple tasks concurrently(multi tasking)
+ 	# -> Good for I/O bound tasks like reading files or fetching data from API's
+ 	# -->    threading.Thread(target=my_function)
+
+import threading
+import time
+
+def walk_dog(first, last):
+	time.sleep(6)
+	print(f'You finished walking the {first} {last}')
+
+def take_out_trash(kind):
+	time.sleep(2)
+	print(f'You finished taking {kind} trash')
+
+def get_mail():
+	time.sleep(4)
+	print('You get the mail')
+
+# while firstly, these functions running on same thread(main thread).So, to complete this chores it goes in one by one order
+
+#walk_dog()
+#take_out_trash()
+#get_mail()
+
+chore1 = threading.Thread(target = walk_dog, args = ('Scooby', 'Doo'))
+chore1.start()
+
+#to pass parameters while multithreading, it accepts tuples and requires *args
+chore2 = threading.Thread(target = take_out_trash, args = ('wet',)) # if we pass single value in tuple, we need to give , at the end
+chore2.start()
+
+chore3 = threading.Thread(target = get_mail)
+chore3.start()
+
+# let's join all chores to complete, to execute rest of the code
+
+chore1.join()
+chore2.join()
+chore3.join()
+
+print('All chores are complete')
 
 
 
