@@ -943,7 +943,7 @@ print('All chores are complete')
 
 -900- Multithreading--------------------------------------------------------------------------'''
 
-
+''' --986--
 # 36. request API data
 
 # Status codes info = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status'
@@ -952,7 +952,6 @@ print('All chores are complete')
 
 
 import requests
-
 
 base_url = 'https://pokeapi.co/api/v2/'
 
@@ -977,14 +976,23 @@ pokemon_name = input('Enter Your Favorite Pokemon: ')
 
 pokemon_info = get_pokemon_info(pokemon_name) # assigning a variable to store pokemon data dictionary
 
+
 if pokemon_info:
 	print(f'Name   : {pokemon_info['name'].capitalize()}')
 	print(f'id     : {pokemon_info['id']}')
 	print(f'Height : {pokemon_info['height']}')
 	print(f'Weight : {pokemon_info['weight']}')
 
+#--946---36. Requesting Api data------------------------------------------------------------------'''
 
 
+# **********************************************************************
+
+# **************** Skipping PyQt5 Topics for now ***********************
+
+# **********************************************************************
+
+# *****************Thank You Bro Code Youtube Channel : 'https://www.youtube.com/watch?v=ix9cRaBkVe0&t=40547s'*****************************************************
 
 
 
